@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto createCategory(CategoryDto categoryDto) {
         boolean isCategoryExist=categoryRepository.existsByTitle(categoryDto.getTitle());
-        if(isCategoryExist) throw new ResourceFoundException("Category", "Id", categoryDto.getCId());
+        if(isCategoryExist) throw new ResourceFoundException("Category", "Id", categoryDto.getId());
         Category category=modelMapper.map(categoryDto,Category.class);
         Category savedCategory=categoryRepository.save(category);
         return modelMapper.map(savedCategory,CategoryDto.class);

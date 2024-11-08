@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CategoryDto {
 
-    private Long cId;
+    private Long id;
     @NotBlank(message = "Required field title")
     private String title;
     @NotBlank(message = "Required field description")

@@ -14,7 +14,7 @@ import com.kunal.blogbackend.utils.ApiResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
+    // Resource not found
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiResponse> resourceNotFoundExceptionHandler(){
         ApiResponse apiResponse=new ApiResponse();
@@ -23,6 +23,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(apiResponse,HttpStatus.BAD_REQUEST);
     }
 
+    // Resource already exist
     @ExceptionHandler(ResourceFoundException.class)
     public ResponseEntity<ApiResponse> resourceFoundExceptionHandler(){
         ApiResponse apiResponse=new ApiResponse();
@@ -31,6 +32,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(apiResponse,HttpStatus.CONFLICT);
     }
 
+    // validation error message
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
